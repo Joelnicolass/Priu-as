@@ -1,17 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Manrope, Pinyon_Script } from "next/font/google";
+import { Bodoni_Moda, Inter_Tight } from "next/font/google";
 import RegisterSW from "@/components/RegisterSW";
 import "./globals.css";
 
 const serif = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
-const sans = Manrope({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const script = Pinyon_Script({ weight: "400", subsets: ["latin"], variable: "--font-script", display: "swap" });
+const sans = Inter_Tight({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Priscila Kaiter — Manicurista",
   description: "Manicura de autor: semipermanente, kapping, soft gel y nail art. Reservá tu turno online en segundos.",
   applicationName: "Priscila Kaiter",
-  appleWebApp: { capable: true, title: "Priscila Kaiter", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "Priscila Kaiter", statusBarStyle: "black-translucent" },
   formatDetection: { telephone: false },
   icons: {
     icon: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FBF5EF",
+  themeColor: "#0A0A0A",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -36,7 +35,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${serif.variable} ${sans.variable} ${script.variable}`}>
+    <html lang="es" className={`${serif.variable} ${sans.variable}`}>
       <body>
         {children}
         <RegisterSW />

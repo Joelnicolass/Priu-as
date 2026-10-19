@@ -10,7 +10,7 @@ type BIPEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ out
 /** Barra superior: transparente sobre la portada, vidrio esmerilado al scrollear. */
 export function AppBar() {
   const { scrollY } = useScroll();
-  const { ready, scrollTo } = useApp();
+  const { ready, scrollTo, openBooking } = useApp();
   const [solid, setSolid] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [install, setInstall] = useState<BIPEvent | null>(null);
@@ -60,7 +60,12 @@ export function AppBar() {
           Instalar app
         </motion.button>
       ) : (
-        <span className="appbar-issue">Nº 01</span>
+        <>
+          <span className="appbar-issue">Nº 01</span>
+          <button className="appbar-book link" onClick={() => openBooking()}>
+            Reservar turno
+          </button>
+        </>
       )}
     </motion.header>
   );

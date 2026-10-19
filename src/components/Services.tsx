@@ -19,9 +19,11 @@ export default function Services() {
         viewport={{ once: true, amount: 0.6 }}
         transition={{ duration: 1, ease: EASE_OUT }}
       >
-        <p className="kicker">Capítulo III — El menú</p>
+        <p className="kicker">III — El menú</p>
         <h2>
-          Servicios <em>de autor</em>
+          Servicios
+          <br />
+          <em>de autor.</em>
         </h2>
       </motion.div>
 
@@ -37,7 +39,6 @@ export default function Services() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.9, ease: EASE_OUT, delay: i * 0.06 }}
               layout
-              style={{ ["--tone" as string]: s.tono }}
             >
               <button
                 className="svc-row"
@@ -70,7 +71,7 @@ export default function Services() {
                           <small>desde</small> {formatPrice(s.precio)}
                         </span>
                         <motion.button
-                          className="btn btn-dark btn-sm"
+                          className="btn btn-light btn-sm"
                           whileTap={{ scale: 0.9 }}
                           transition={{ type: "spring", stiffness: 500, damping: 15 }}
                           onClick={() => {

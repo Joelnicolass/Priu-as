@@ -2,9 +2,9 @@
 import { chromium } from "playwright";
 
 const html = (size, pad) => `<!doctype html><html><body style="margin:0">
-<div style="width:${size}px;height:${size}px;background:radial-gradient(120% 90% at 80% 0%,#FF7A66,transparent 60%),radial-gradient(100% 80% at 0% 100%,#DCCDF5,transparent 60%),#F7D3D8;display:grid;place-items:center">
-  <div style="width:${size - pad * 2}px;height:${size - pad * 2}px;display:grid;place-items:center;font-family:'Bodoni 72','Didot','DejaVu Serif',Georgia,serif;font-size:${(size - pad * 2) * 0.5}px;line-height:1;color:#1C1416;letter-spacing:-0.04em">
-    <span>P<i style="color:#D7264F">K</i></span>
+<div style="width:${size}px;height:${size}px;background:#0A0A0A;display:grid;place-items:center">
+  <div style="width:${size - pad * 2}px;height:${size - pad * 2}px;display:grid;place-items:center;font-family:'Bodoni 72','Didot','DejaVu Serif',Georgia,serif;font-size:${(size - pad * 2) * 0.5}px;line-height:1;color:#F4F1EC;letter-spacing:-0.06em">
+    <span>P<i>K</i></span>
   </div>
 </div></body></html>`;
 

@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useDragControls, type PanInfo } from "framer-m
 import { useEffect, useMemo, useState } from "react";
 import { useApp } from "./Providers";
 import Nail from "./Nail";
-import { SLOTS, formatPrice, services, palette } from "@/lib/data";
+import { SLOTS, formatPrice, services } from "@/lib/data";
 import { book, fetchTaken } from "@/lib/supabase";
 import { EASE_OUT, haptic, springSoft } from "@/lib/motion";
 
@@ -70,7 +70,7 @@ function Burst() {
           x: Math.cos(a) * r,
           y: Math.sin(a) * r * 0.8 - 40,
           rot: (i % 2 ? 1 : -1) * (180 + i * 20),
-          c: [palette.cherry, palette.lilac, palette.butter, palette.mint, palette.coral, palette.blush][i % 6],
+          c: ["#0A0A0A", "#C8102E", "#0A0A0A", "#BDBDBD"][i % 4],
           s: 0.6 + (i % 3) * 0.25,
         };
       }),
@@ -244,7 +244,7 @@ export default function BookingSheet() {
                         animate={{ y: 0, scale: 1, rotate: -8 }}
                         transition={{ type: "spring", stiffness: 220, damping: 10 }}
                       >
-                        <Nail shape="almond" color="#D7264F" color2="#FF7A66" />
+                        <Nail shape="almond" color="#C8102E" color2="#E03A4E" minimal />
                       </motion.div>
                     </div>
                     <h3>
@@ -288,7 +288,6 @@ export default function BookingSheet() {
                           <motion.button
                             key={s.id}
                             className={`opt ${service === s.id ? "is-on" : ""}`}
-                            style={{ ["--tone" as string]: s.tono }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05, duration: 0.5, ease: EASE_OUT }}
@@ -298,8 +297,7 @@ export default function BookingSheet() {
                               setService(s.id);
                             }}
                           >
-                            <span className="opt-dot" />
-                            <span className="opt-main">
+                                                        <span className="opt-main">
                               <b>{s.nombre}</b>
                               <small>
                                 {s.duracion} min · desde {formatPrice(s.precio)}

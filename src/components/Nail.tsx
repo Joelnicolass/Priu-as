@@ -33,9 +33,11 @@ type Props = {
   shimmer?: boolean;
   d?: MotionValue<string>;
   fill?: MotionValue<string>;
+  /** Versión sobria: un único reflejo fino, sin brillo animado ni sombra. */
+  minimal?: boolean;
 };
 
-export default function Nail({ shape, color, color2, finish = "gloss", className, shimmer = true, d, fill }: Props) {
+export default function Nail({ shape, color, color2, finish = "gloss", className, shimmer = true, d, fill, minimal = false }: Props) {
   const uid = useId().replace(/:/g, "");
   const path = nailPath(shape);
   const c2 = color2 ?? color;
@@ -118,9 +120,9 @@ export default function Nail({ shape, color, color2, finish = "gloss", className
         {finish === "french" && <path d={frenchLine(shape)} fill={c2 === color ? "#ffffff" : c2} />}
         {finish === "milky" && <rect x="0" y="-10" width="100" height="180" fill="#ffffff" opacity=".35" />}
         {/* reflejo principal: volumen y "dibujo sólido" */}
-        <path d="M26 46 C24 80 25 110 30 132" stroke="#fff" strokeOpacity=".7" strokeWidth="7" strokeLinecap="round" fill="none" />
-        <circle cx="30" cy="34" r="3.2" fill="#fff" opacity=".8" />
-        <path d="M14 136 C30 152 70 152 86 136" stroke="#000" strokeOpacity=".08" strokeWidth="8" fill="none" />
+        <path d="M27 50 C25 82 26 110 30 130" stroke="#fff" strokeOpacity={minimal ? 0.35 : 0.7} strokeWidth={minimal ? 3 : 7} strokeLinecap="round" fill="none" />
+        {!minimal && <circle cx="30" cy="34" r="3.2" fill="#fff" opacity=".8" />}
+        {!minimal && <path d="M14 136 C30 152 70 152 86 136" stroke="#000" strokeOpacity=".08" strokeWidth="8" fill="none" />}
         {shimmer && (
           <motion.rect
             y="-10"

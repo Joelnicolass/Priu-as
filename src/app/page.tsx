@@ -5,8 +5,7 @@ import Splash from "@/components/Splash";
 import { AppBar, TabBar } from "@/components/Chrome";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
-import Statement from "@/components/Statement";
-import ShapeStory from "@/components/ShapeStory";
+import Shapes from "@/components/Shapes";
 import Trends from "@/components/Trends";
 import Services from "@/components/Services";
 import Manifesto from "@/components/Manifesto";
@@ -21,11 +20,9 @@ export default function Home() {
       <AppBar />
       <main>
         <Hero />
-        <Marquee items={["Semipermanente", "Kapping", "Soft gel", "Nail art", "Spa de manos", "Cromados"]} tilt={-2} />
-        <Statement />
-        <ShapeStory />
+        <Marquee items={["Semipermanente", "Kapping", "Soft gel", "Nail art", "Spa de manos"]} dark speed={2} />
+        <Shapes />
         <Trends />
-        <Marquee items={["Milky", "Glazed", "French micro", "Aura", "Cherry", "Cat eye"]} dark speed={2.4} tilt={1.5} />
         <Services />
         <Manifesto />
         <Care />
