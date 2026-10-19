@@ -39,6 +39,7 @@ export default function Services() {
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.9, ease: EASE_OUT, delay: i * 0.06 }}
               layout
+              style={{ ["--tone" as string]: s.tono }}
             >
               <button
                 className="svc-row"
@@ -48,7 +49,9 @@ export default function Services() {
                   setOpen(isOpen ? null : s.id);
                 }}
               >
-                <span className="svc-n">0{i + 1}</span>
+                <span className="svc-n">
+                  <i className="dot" />0{i + 1}
+                </span>
                 <span className="svc-name">{s.nombre}</span>
                 <span className="svc-meta">{s.duracion}′</span>
                 <motion.span className="svc-plus" animate={{ rotate: isOpen ? 45 : 0 }} transition={{ type: "spring", stiffness: 400, damping: 18 }}>

@@ -30,7 +30,7 @@ export const services: Service[] = [
     bajada: "Esmaltado de larga duración, brillo espejo durante tres semanas. Incluye limado y cutícula.",
     duracion: 60,
     precio: 18000,
-    tono: palette.blush,
+    tono: "#E9A6B2",
   },
   {
     id: "kapping",
@@ -38,7 +38,7 @@ export const services: Service[] = [
     bajada: "Una capa de gel sobre la uña natural que la fortalece sin alargarla. Ideal para uñas que se quiebran.",
     duracion: 75,
     precio: 23000,
-    tono: palette.lilac,
+    tono: "#B9A6E0",
   },
   {
     id: "softgel",
@@ -46,7 +46,7 @@ export const services: Service[] = [
     bajada: "Tips de gel suave a medida: almendra, coffin o stiletto. Largo y forma impecables desde el primer día.",
     duracion: 105,
     precio: 32000,
-    tono: palette.butter,
+    tono: "#E8C766",
   },
   {
     id: "nailart",
@@ -54,7 +54,7 @@ export const services: Service[] = [
     bajada: "Cromados, aura, french micro, ojo de gato y dibujo a mano alzada. Cada set es una pieza única.",
     duracion: 90,
     precio: 28000,
-    tono: palette.mint,
+    tono: "#7FBF9E",
   },
   {
     id: "spa",
@@ -62,9 +62,12 @@ export const services: Service[] = [
     bajada: "Exfoliación, máscara hidratante, masaje y esmaltado tradicional. Un ritual para frenar el tiempo.",
     duracion: 50,
     precio: 15000,
-    tono: palette.sky,
+    tono: "#9EC3E6",
   },
 ];
+
+// Acentos de temporada: aparecen solo como detalle.
+export const accents = ["#C8102E", "#E9A6B2", "#B9A6E0", "#E8C766", "#7FBF9E"];
 
 export const shapes: { id: NailShape; nombre: string; nota: string; color: string; bg: string; finish: Finish }[] = [
   { id: "oval", nombre: "Oval", nota: "La forma clásica que alarga los dedos.", color: "#E8A3B0", bg: palette.blush, finish: "gloss" },

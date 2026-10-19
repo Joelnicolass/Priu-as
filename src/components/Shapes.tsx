@@ -28,7 +28,9 @@ export default function Shapes() {
             <motion.div className="shape-fig" whileHover={{ y: -10 }} whileTap={{ scale: 0.94 }} transition={{ type: "spring", stiffness: 300, damping: 14 }}>
               <Nail shape={s.id} color="#0A0A0A" color2="#3A3A3A" minimal shimmer={false} />
             </motion.div>
-            <span className="shape-n">0{i + 1}</span>
+            <span className="shape-n">
+              <i className="dot" style={{ background: s.color }} />0{i + 1}
+            </span>
             <h3>{s.nombre}</h3>
             <p>{s.nota}</p>
           </motion.li>

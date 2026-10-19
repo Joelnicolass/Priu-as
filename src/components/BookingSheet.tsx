@@ -70,7 +70,7 @@ function Burst() {
           x: Math.cos(a) * r,
           y: Math.sin(a) * r * 0.8 - 40,
           rot: (i % 2 ? 1 : -1) * (180 + i * 20),
-          c: ["#0A0A0A", "#C8102E", "#0A0A0A", "#BDBDBD"][i % 4],
+          c: ["#C8102E", "#E9A6B2", "#B9A6E0", "#E8C766", "#7FBF9E", "#0A0A0A"][i % 6],
           s: 0.6 + (i % 3) * 0.25,
         };
       }),
@@ -288,6 +288,7 @@ export default function BookingSheet() {
                           <motion.button
                             key={s.id}
                             className={`opt ${service === s.id ? "is-on" : ""}`}
+                            style={{ ["--tone" as string]: s.tono }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05, duration: 0.5, ease: EASE_OUT }}
@@ -297,7 +298,8 @@ export default function BookingSheet() {
                               setService(s.id);
                             }}
                           >
-                                                        <span className="opt-main">
+                                                        <i className="dot" />
+                            <span className="opt-main">
                               <b>{s.nombre}</b>
                               <small>
                                 {s.duracion} min · desde {formatPrice(s.precio)}

@@ -3,6 +3,8 @@
 import { motion, useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity, wrap } from "framer-motion";
 import { useRef } from "react";
 
+const ACCENTS = ["#C8102E", "#E9A6B2", "#B9A6E0", "#E8C766", "#7FBF9E"];
+
 /** Cinta infinita que acelera y cambia de sentido con la velocidad del scroll. */
 export default function Marquee({ items, speed = 3, dark = false, tilt = 0 }: { items: string[]; speed?: number; dark?: boolean; tilt?: number }) {
   const base = useMotionValue(0);
@@ -30,7 +32,7 @@ export default function Marquee({ items, speed = 3, dark = false, tilt = 0 }: { 
             {row.map((t, i) => (
               <span key={i}>
                 {t}
-                <i>✦</i>
+                <i style={{ color: ACCENTS[i % ACCENTS.length] }}>●</i>
               </span>
             ))}
           </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useApp } from "./Providers";
 import Magnetic from "./Magnetic";
 import { Reveal } from "./Shapes";
-import { quotes } from "@/lib/data";
+import { accents, quotes } from "@/lib/data";
 import { EASE_OUT, haptic } from "@/lib/motion";
 
 export function Quotes() {
@@ -37,10 +37,11 @@ export function FinalCTA() {
   return (
     <section className="final" id="reservar">
       <motion.h2 initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.5 }} variants={{ show: { transition: { staggerChildren: 0.12 } } }}>
-        {["Tu próxima", "cita."].map((l, i) => (
+        {["Tu próxima", "cita"].map((l, i) => (
           <span className="mask" key={l}>
             <motion.span className={`mask-inner ${i ? "it" : ""}`} variants={{ hidden: { y: "110%" }, show: { y: "0%", transition: { duration: 1.1, ease: EASE_OUT } } }}>
               {l}
+              {i === 1 && <span className="stop">.</span>}
             </motion.span>
           </span>
         ))}
@@ -80,6 +81,19 @@ export function Footer() {
           <p>Productos hipoalergénicos</p>
           <p>Material esterilizado</p>
         </div>
+      </div>
+      <div className="footer-palette" aria-label="Paleta de temporada">
+        {accents.map((c, i) => (
+          <motion.span
+            key={c}
+            style={{ background: c }}
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 300, damping: 12, delay: i * 0.07 }}
+          />
+        ))}
+        <small>Paleta de temporada</small>
       </div>
       <p className="footer-colophon">© {new Date().getFullYear()} Priscila Kaiter — Manicura de autor</p>
     </footer>

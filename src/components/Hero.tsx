@@ -80,12 +80,15 @@ export default function Hero() {
           variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 1.2 } } }}
         >
           {[
-            ["El rojo", "vuelve a mandar"],
-            ["Milky", "la uña desnuda, mejorada"],
-            ["Ritual", "cuidados en cinco minutos"],
-          ].map(([a, b]) => (
+            ["El rojo", "vuelve a mandar", "#C8102E"],
+            ["Milky", "la uña desnuda, mejorada", "#E9A6B2"],
+            ["Ritual", "cuidados en cinco minutos", "#7FBF9E"],
+          ].map(([a, b, c]) => (
             <motion.li key={a} variants={{ hidden: { opacity: 0, x: -16 }, show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: EASE_OUT } } }}>
-              <b>{a}</b>
+              <b>
+                <i className="dot" style={{ background: c }} />
+                {a}
+              </b>
               <span>{b}</span>
             </motion.li>
           ))}

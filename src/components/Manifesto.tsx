@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { EASE_OUT } from "@/lib/motion";
 
-const LINES = ["La elegancia", "no se grita:", "se nota en", "el detalle."];
+const LINES = ["La elegancia", "no se grita:", "se nota en", "el detalle"];
 
 export default function Manifesto() {
   return (
@@ -17,6 +17,7 @@ export default function Manifesto() {
               variants={{ hidden: { y: "110%" }, show: { y: "0%", transition: { duration: 1.1, ease: EASE_OUT } } }}
             >
               {l}
+              {i === LINES.length - 1 && <span className="stop">.</span>}
             </motion.span>
           </span>
         ))}
