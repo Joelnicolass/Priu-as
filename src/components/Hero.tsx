@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useApp } from "./Providers";
 import Nail from "./Nail";
 import Magnetic from "./Magnetic";
@@ -39,6 +39,15 @@ export default function Hero() {
   const nailY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const nailR = useTransform(scrollYProgress, [0, 1], [-14, -4]);
 
+  // La uña se monta recién cuando le toca entrar: si estuviera en el DOM desde
+  // el inicio, Safari puede mostrarla un instante antes de que corra la animación.
+  const [nailIn, setNailIn] = useState(false);
+  useEffect(() => {
+    if (!ready) return;
+    const t = setTimeout(() => setNailIn(true), 1000);
+    return () => clearTimeout(t);
+  }, [ready]);
+
   return (
     <section className="hero" id="inicio" ref={ref}>
       <motion.div className="hero-top" {...fadeUp(ready, 0)}>
@@ -64,14 +73,16 @@ export default function Hero() {
       >
         <motion.div className="cover-nail" style={{ y: nailY, rotate: nailR }}>
           {/* Anticipación + squash & stretch al asentarse */}
-          <motion.div
-            initial={{ y: 60, scaleY: 0.9, scaleX: 1.06, opacity: 0 }}
-            animate={ready ? { y: [60, -10, 0], scaleY: [0.9, 1.06, 1], scaleX: [1.06, 0.96, 1], opacity: 1 } : undefined}
-            transition={{ duration: 1.1, delay: 1, times: [0, 0.6, 1], ease: EASE_OUT }}
-            style={{ originY: 1 }}
-          >
-            <Nail shape="almond" color="#C8102E" color2="#E03A4E" minimal />
-          </motion.div>
+          {nailIn && (
+            <motion.div
+              initial={{ y: 60, scaleY: 0.9, scaleX: 1.06, opacity: 0 }}
+              animate={{ y: [60, -10, 0], scaleY: [0.9, 1.06, 1], scaleX: [1.06, 0.96, 1], opacity: [0, 1, 1] }}
+              transition={{ duration: 1.1, times: [0, 0.6, 1], ease: EASE_OUT }}
+              style={{ originY: 1 }}
+            >
+              <Nail shape="almond" color="#C8102E" color2="#E03A4E" minimal />
+            </motion.div>
+          )}
         </motion.div>
         <motion.ul
           className="cover-lines"

@@ -45,14 +45,18 @@ export default function Splash() {
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.55, ease: EASE_OUT }}
               />
-              <motion.p
-                className="splash-sub"
-                initial={{ opacity: 0, letterSpacing: "0.2em" }}
-                animate={{ opacity: 1, letterSpacing: "0.5em" }}
-                transition={{ duration: 1.2, delay: 0.8, ease: EASE_OUT }}
-              >
-                MANICURA DE AUTOR
-              </motion.p>
+              <p className="splash-sub">
+                <span className="mask">
+                  <motion.span
+                    className="mask-inner"
+                    initial={{ y: "120%" }}
+                    animate={{ y: "0%" }}
+                    transition={{ duration: 0.9, delay: 0.7, ease: EASE_OUT }}
+                  >
+                    Manicura de autor
+                  </motion.span>
+                </span>
+              </p>
             </motion.div>
           </motion.div>
         </motion.div>

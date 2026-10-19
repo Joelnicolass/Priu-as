@@ -265,7 +265,9 @@ h2 em,
 .splash-sub {
   font-size: 10px;
   font-weight: 600;
-  padding-left: 0.5em;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  padding-left: 0.42em;
 }
 
 /* ---------- Barra superior ---------- */
